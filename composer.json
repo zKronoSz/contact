@@ -1,0 +1,15 @@
+{
+    "name": "dados/manutencao-contato",
+    "description": "manutencaoDeDados",
+    "autoload": {
+       "psr-4": {
+            "Src\\": "src/",
+            "App\\":"app/", 
+            "Config\\":"config/",
+            "Resources":"Resources"
+        }
+    },
+    "require": {
+        "vlucas/phpdotenv": "^5.6"
+    }
+}
