@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'dados/manutencao-contato',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => null,
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => '1eb62a84eb77a220ead15de7246fa7bef13d2d21',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         'dados/manutencao-contato' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => null,
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '1eb62a84eb77a220ead15de7246fa7bef13d2d21',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

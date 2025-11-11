@@ -8,7 +8,7 @@
     class HomeController{
 
         public static function getHome(){
-            return ViewsController::render('pages/home');
+            return ViewsController::render('home');
         }
 
     }

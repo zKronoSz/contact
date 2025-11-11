@@ -1,28 +1,23 @@
 <?php
 
-/**gerencisar conteudo dinamico das views */
-
 namespace App\Controllers\Pages\Utils;
 
-class ViewsController
-{
+class ViewsController {
 
-    /** Metodo responsavel por retornar o conteudo da view */
+    public static function render($view, $data = []) {
+        // Extrai variáveis do array $data (ex: $nome, $contatos, etc)
+        extract($data);
 
+        // Caminho absoluto até a pasta das views
+        $caminho = realpath(__DIR__ . '/../../../../resources/views/pages/' . $view . '.php');
 
-    private static function getContentView($view)
-    {
-        $file = __DIR__ . '/../../../../resources/views/' . $view . '.php';
-        return file_exists($file) ? file_get_contents($file) : '';
-    }
+        // Verifica se o arquivo existe
+        if (!file_exists($caminho)) {
+            echo "View não encontrada: " . $caminho;
+            exit;
+        }
 
-    public static function render($view, $vars = [])
-    {
-        $contentView = self::getContentView($view);
-        if (empty($contentView)) {
-            die("View não encontrada: " . __DIR__ . '/../../../../../resources/views/' . $view . '.php');
-        }else{
-        return $contentView;
-         }
+        // Inclui a view
+        include $caminho;
     }
 }

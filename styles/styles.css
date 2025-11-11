@@ -1,0 +1,188 @@
+/* Cores Customizadas */
+:root {
+    --primary-purple: #6c47ff; 
+    --light-purple: #9d81ff; 
+    --background-grey: #f0f2f5; 
+    --text-color: #333;
+    --link-color: var(--primary-purple);
+}
+
+body {
+    background-color: var(--background-grey);
+}
+
+.login-container {
+    min-height: 100vh;
+}
+
+.login-card {
+    max-width: 900px; 
+}
+
+/* --- Seção de Boas-Vindas (Roxa) --- */
+.welcome-section {
+    background: linear-gradient(135deg, var(--primary-purple) 0%, var(--light-purple) 100%);
+    position: relative;
+    z-index: 1; 
+}
+
+.welcome-section h1 {
+    font-weight: 700;
+}
+
+
+.welcome-section::before,
+.welcome-section::after {
+    content: '';
+    position: absolute;
+    
+    background: rgba(255, 255, 255, 0.1); 
+    border-radius: 50%;
+    filter: blur(50px);
+    z-index: -1; 
+}
+
+
+.welcome-section::before {
+    width: 200px;
+    height: 200px;
+    top: -50px;
+    left: -50px;
+    opacity: 0.6;
+}
+
+.welcome-section::after {
+    width: 300px;
+    height: 300px;
+    bottom: -80px;
+    right: -80px;
+    opacity: 0.4;
+}
+
+
+
+
+/* --- Formulário de Login (Branco) --- */
+.sign-in-title {
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+/* Input Group (Campos de formulário) */
+.custom-input-group .input-group-text {
+    background-color: white;
+    border-right: none;
+    color: #ccc; /* Cor dos ícones */
+    border-radius: .25rem 0 0 .25rem;
+}
+
+.custom-input-group .form-control {
+    border-left: none;
+    /* Estilo para simular o design suave da imagem */
+    border-radius: 0 .25rem .25rem 0;
+}
+
+
+
+.custom-input-group .form-control:focus {
+    box-shadow: 0 0 0 .25rem rgba(108, 71, 255, 0.25); /* Sombra suave ao focar */
+    border-color: var(--primary-purple);
+}
+
+/* Botão Sign(entrar) In */
+.sign-in-btn {
+    background-color: var(--primary-purple);
+    border-color: var(--primary-purple);
+    padding: 0.75rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.sign-in-btn:hover {
+    background-color: #5a38d6; 
+    border-color: #5a38d6;
+}
+
+/* Checkbox e Links */
+.form-check-input:checked {
+    background-color: var(--primary-purple);
+    border-color: var(--primary-purple);
+}
+
+.forgot-password-link, 
+.create-account-link {
+    color: var(--link-color);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.create-account-link:hover,
+.forgot-password-link:hover {
+    text-decoration: underline;
+}
+
+.new-here-text {
+    font-size: 0.9rem;
+}
+
+
+@media (max-width: 768px) {
+    .welcome-section {
+        display: none !important;
+    }
+
+    .login-card {
+        width: 90% !important; 
+    }
+}
+.alert {
+    margin-bottom: 1rem; /* distância do input abaixo */
+}
+
+
+/*dash board*/
+.card-body.p-0 {
+    padding: 0 !important;
+    border-radius: 0.5rem;
+}
+
+#contatosTable thead {
+    border-bottom: none;
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+#contatosTable td, #contatosTable th {
+    border-top: none !important;
+    border-bottom: none !important;
+}
+
+#contatosTable tbody tr {
+    transition: background-color 0.15s ease-in-out;
+}
+
+#contatosTable tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+.dataTables_paginate {
+    padding-top: 10px;
+}
+
+.text-danger.fw-bold {
+    color: #dc3545 !important;
+}
+.text-info.fw-bold {
+    color: #0dcaf0 !important;
+}
+.text-warning.fw-bold {
+    color: #ffc107 !important;
+}
+.text-primary.fw-bold {
+    color: #0d6efd !important;
+}
+
+.dataTables_wrapper .row:last-child {
+    padding: 1rem;
+}

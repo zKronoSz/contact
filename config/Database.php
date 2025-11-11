@@ -1,41 +1,39 @@
 <?php 
 
-namespace Config\Database;
+namespace Config;
 
-class Database{
+use PDO;
+use PDOException;
 
-    private static ?\PDO $pdo = null;
+class Database {
 
-    public static function getConnection():\PDO{
-        if(self::$pdo === null){
-           try{ 
-            $dotenv = \Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
-            $dotenv->load();
-            $dotenv->required(['DB_HOST', 'DB_NAME', 'DB_USER', 'DB_PASS']);
-            
-            $host = $_ENV['DB_HOST'];
-            $name = $_ENV['DB_NAME'];
-            $user = $_ENV['DB_USER'];
-            $password = $_ENV['DB_PASS'];
+    private static ?PDO $pdo = null;
 
-            $dsn = $dsn = "mysql:host=localhost;dbname=$name";
+    public static function getConnection(): PDO {
+        if (self::$pdo === null) {
+            try {
+                $dotenv = \Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
+                $dotenv->load();
+                $dotenv->required(['DB_HOST', 'DB_NAME', 'DB_USER', 'DB_PASS']);
 
-            self::$pdo = new \PDO($dsn, $user, $password, [
-                    \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
-                    \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC,
-                    \PDO::ATTR_EMULATE_PREPARES => false,
+                $host = $_ENV['DB_HOST'];
+                $name = $_ENV['DB_NAME'];
+                $user = $_ENV['DB_USER'];
+                $password = $_ENV['DB_PASS'];
+
+                $dsn = "mysql:host=$host;dbname=$name;charset=utf8mb4";
+
+                self::$pdo = new PDO($dsn, $user, $password, [
+                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+                    PDO::ATTR_EMULATE_PREPARES => false,
                 ]);
-             
-        
-            }catch(\PDOException $e){
-                   $e->getMessage(); 
-            }
 
+            } catch (PDOException $e) {
+                die("Erro ao conectar ao banco: " . $e->getMessage());
+            }
         }
+
         return self::$pdo;
     }
 }
-
-
-
-?>
