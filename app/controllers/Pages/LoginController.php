@@ -15,7 +15,7 @@ class LoginController {
         $senha = password_hash($dados['senha'], PASSWORD_DEFAULT);
 
         // Verifica se o e-mail já existe
-        $check = $pdo->prepare("SELECT * FROM usuarios WHERE email = ?");
+        $check = $pdo->prepare("SELECT * FROM usuarios WHERE email = ?");   
         $check->execute([$email]);
         if ($check->rowCount() > 0) {
             echo "<script>alert('E-mail já cadastrado!'); window.history.back();</script>";
