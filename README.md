@@ -130,7 +130,25 @@ composer install
 
 Isso garante compatibilidade total com sua versão.
 ====================================================================================================================
-🌐 8. ACESSAR O PROJETO
+🚀 7. INSTALAR AS DEPENDÊNCIAS DO COMPOSER
+
+Abra o terminal dentro do projeto: cd C:\laragon\www\DADOSCONTATO
+
+Agora instale todas as dependências: composer install
+
+Isso irá instalar automaticamente:
+
+Autoload
+
+PHPUnit
+
+Dependências do backend
+
+Arquivos necessários para rodar os testes
+
+📌 IMPORTANTE: Se você não rodar o composer install, o PHPUnit não funcionará.
+====================================================================================================================
+🌐 9. ACESSAR O PROJETO
 
 Depois de tudo configurado:
 
