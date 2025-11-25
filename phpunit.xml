@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit bootstrap="src/Testes/bootstrap.php"
+         colors="true"
+         verbose="true">
+    <testsuites>
+        <testsuite name="Unitários">
+            <directory suffix="Test.php">src/Testes/Unitarios</directory>
+        </testsuite>
+        <testsuite name="Integração">
+            <directory suffix="Test.php">src/Testes/Integracao</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>

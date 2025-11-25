@@ -36,4 +36,43 @@ class Database {
 
         return self::$pdo;
     }
+
+     /**
+     * Método específico para testes - conexão com SQLite em memória
+     */
+    public static function getTestConnection(): PDO {
+        try {
+            $pdo = new PDO('sqlite::memory:');
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+            
+            // Cria tabelas para testes
+            $pdo->exec("
+                CREATE TABLE IF NOT EXISTS usuarios (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    nome VARCHAR(255),
+                    email VARCHAR(255) UNIQUE,
+                    senha VARCHAR(255),
+                    criado_em DATETIME DEFAULT CURRENT_TIMESTAMP
+                )
+            ");
+            
+            $pdo->exec("
+                CREATE TABLE IF NOT EXISTS contatos (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    id_usuario INTEGER,
+                    nome VARCHAR(255),
+                    numero VARCHAR(9),
+                    status VARCHAR(50),
+                    criado_em DATETIME DEFAULT CURRENT_TIMESTAMP,
+                    FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
+                )
+            ");
+            
+            return $pdo;
+        } catch (PDOException $e) {
+            die("Erro ao conectar ao banco de teste: " . $e->getMessage());
+        }
+    }
 }
+
